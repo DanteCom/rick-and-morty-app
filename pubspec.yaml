@@ -13,18 +13,29 @@ dependencies:
 
   cupertino_icons: ^1.0.8
 
+  get_it: ^9.2.1
+  injectable: ^3.0.0
+
+  auto_route: ^11.1.0
+
+  flutter_svg: ^2.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^6.0.0
 
+  build_runner: ^2.15.1
+  injectable_generator: ^3.1.1
+  auto_route_generator: ^10.6.0
+
 flutter:
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/svgs/
 
   # fonts:
   #   - family: Schyler
