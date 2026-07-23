@@ -43,7 +43,7 @@ class AppShellPage extends StatelessWidget {
                       Expanded(
                         child: _Tab(
                           icon: Svgs.character,
-                          title: 'Home',
+                          title: 'Персонажи',
                           isActive: isActive(0),
                           onPressed: () => tabsRouter.setActiveIndex(0),
                         ),
@@ -51,7 +51,7 @@ class AppShellPage extends StatelessWidget {
                       Expanded(
                         child: _Tab(
                           icon: Svgs.planet,
-                          title: 'Home',
+                          title: 'Локациии',
                           isActive: isActive(1),
                           onPressed: () => tabsRouter.setActiveIndex(1),
                         ),
@@ -59,7 +59,7 @@ class AppShellPage extends StatelessWidget {
                       Expanded(
                         child: _Tab(
                           icon: Svgs.tv,
-                          title: 'Home',
+                          title: 'Эпизоды',
                           isActive: isActive(2),
                           onPressed: () => tabsRouter.setActiveIndex(2),
                         ),
@@ -67,7 +67,7 @@ class AppShellPage extends StatelessWidget {
                       Expanded(
                         child: _Tab(
                           icon: Svgs.settings,
-                          title: 'Settings',
+                          title: 'Настройки',
                           isActive: isActive(3),
                           onPressed: () {},
                         ),
@@ -112,7 +112,7 @@ class _Tab extends StatelessWidget {
           ),
           SizedBox(height: 3),
           Text(
-            'Home',
+            title,
             style: AppTextStyles.s12w400(
               isActive ? color.primary : color.textSecondary,
             ),
