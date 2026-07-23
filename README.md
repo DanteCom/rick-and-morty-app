@@ -1,17 +1,54 @@
-# rick_and_morty
+# 📱 Rick And Morty App
 
-A new Flutter project.
+**Rick And Morty** — pet-проект мобильного приложения для исследования вселенной Rick and Morty
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🎨 Design
 
-A few resources to get you started if this is your first Flutter project:
+UI дизайн взят из Figma Community:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+**Rick & Morty App UI Kit**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🔗 https://www.figma.com/design/oD1PX2y5tukbJEBPHf4Psx
+
+---
+
+## ✨ Features
+
+* Персонажи
+* Локации
+* Эпизоды
+
+---
+
+## 🛠 Tech Stack
+
+- 💙 Flutter
+- 🎯 Dart
+- 🧩 BLoC
+- 🛣 AutoRoute
+- 💉 Injectable
+- 📦 GetIt
+- 🌐 Dio
+- ✨ Flutter SVG
+
+---
+
+## 🚀 Purpose of the Project
+
+Этот проект создан для практики:
+
+- 📐 Чистой архитектуры
+- 🎨 Построения современного UI
+- ✨ Анимаций
+- 🧩 Feature-first структуры проекта
+- ⚡ Работы с REST API
+
+---
+
+## 📸 Preview
+
+<p align="center">
+  <img src="screenshots/characters.png" width="24%">
+</p>
