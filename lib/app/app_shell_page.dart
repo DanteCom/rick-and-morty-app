@@ -24,7 +24,16 @@ class AppShellPage extends StatelessWidget {
         return Scaffold(
           body: child,
           bottomNavigationBar: Container(
-            decoration: BoxDecoration(color: color.secondary),
+            decoration: BoxDecoration(
+              color: color.surface,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 30,
+                  offset: Offset(0, -4),
+                  color: Color(0xFF000000).withAlpha(80),
+                ),
+              ],
+            ),
             child: SafeArea(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
