@@ -19,6 +19,7 @@ class CharactersPage extends StatefulWidget {
 
 class _CharactersPageState extends State<CharactersPage> {
   double _progress = 0.0;
+  bool isGrid = false;
 
   late final ScrollController _controller;
   late final TextEditingController _searchController;
@@ -57,18 +58,17 @@ class _CharactersPageState extends State<CharactersPage> {
 
   @override
   Widget build(BuildContext context) {
-    final color = AppColorScheme.of(context);
-
     return Scaffold(
       body: Column(
         children: [
           _Header(
             maxHeight: maxHeight,
             minHeight: minHeight,
+            isGrid: isGrid,
             progress: progress,
             hintText: 'Найти персонажа',
             controller: _searchController,
-            onGridButton: () {},
+            onGridButton: () => setState(() => isGrid = !isGrid),
             onSearchButton: () {
               _controller.animateTo(
                 0.0,
@@ -92,40 +92,24 @@ class _CharactersPageState extends State<CharactersPage> {
               return false;
             },
             child: Expanded(
-              child: ListView.separated(
-                itemCount: 20,
+              child: CustomScrollView(
                 controller: _controller,
-                padding: EdgeInsets.all(16),
-                separatorBuilder: (context, index) => SizedBox(height: 24),
-                itemBuilder: (context, index) => Row(
-                  children: [
-                    Container(
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(shape: BoxShape.circle),
-                      width: 74,
-                      height: 74,
-                      child: Image.asset(Images.image),
+                slivers: [
+                  SliverPadding(
+                    padding: EdgeInsets.all(16),
+                    sliver: SliverGrid.builder(
+                      itemCount: 10,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: isGrid ? 2 : 1,
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 24,
+                        mainAxisExtent: isGrid ? 200 : 74,
+                      ),
+                      itemBuilder: (context, index) =>
+                          isGrid ? _CharacterGridCard() : _CharacterListCard(),
                     ),
-                    SizedBox(width: 18),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Живой',
-                          style: AppTextStyles.s15w500(Color(0xFF43D049)),
-                        ),
-                        Text(
-                          'Рик Cанчез',
-                          style: AppTextStyles.s16w500(color.textPrimary),
-                        ),
-                        Text(
-                          'Человек, Мужской',
-                          style: AppTextStyles.s16w500(color.textSecondary),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -135,8 +119,68 @@ class _CharactersPageState extends State<CharactersPage> {
   }
 }
 
+class _CharacterListCard extends StatelessWidget {
+  const _CharacterListCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final color = AppColorScheme.of(context);
+    return Row(
+      children: [
+        Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(shape: BoxShape.circle),
+          width: 74,
+          height: 74,
+          child: Image.asset(Images.image),
+        ),
+        SizedBox(width: 18),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Живой', style: AppTextStyles.s15w500(Color(0xFF43D049))),
+            Text('Рик Cанчез', style: AppTextStyles.s16w500(color.textPrimary)),
+            Text(
+              'Человек, Мужской',
+              style: AppTextStyles.s16w500(color.textSecondary),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _CharacterGridCard extends StatelessWidget {
+  const _CharacterGridCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final color = AppColorScheme.of(context);
+    return Column(
+      children: [
+        Container(
+          height: 120,
+          width: 120,
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(shape: BoxShape.circle),
+          child: Image.asset(Images.image, fit: BoxFit.cover),
+        ),
+        SizedBox(height: 18),
+        Text('Живой', style: AppTextStyles.s12w400(Color(0xFF43D049))),
+        Text('Рик Cанчез', style: AppTextStyles.s15w500(color.textPrimary)),
+        Text(
+          'Человек, Мужской',
+          style: AppTextStyles.s12w400(color.textSecondary),
+        ),
+      ],
+    );
+  }
+}
+
 class _Header extends StatelessWidget {
   const _Header({
+    this.isGrid = false,
     required this.maxHeight,
     required this.minHeight,
     required this.progress,
@@ -145,6 +189,7 @@ class _Header extends StatelessWidget {
     required this.hintText,
     required this.controller,
   });
+  final bool isGrid;
 
   final double maxHeight;
   final double minHeight;
@@ -201,12 +246,12 @@ class _Header extends StatelessWidget {
                 Row(
                   children: [
                     CupertinoButton(
-                      onPressed: () {},
                       color: color.onSurface,
                       padding: EdgeInsets.zero,
+                      onPressed: onGridButton,
                       child: AppSvgPicture(
-                        Svgs.grid,
                         color: color.textSecondary,
+                        isGrid ? Svgs.list : Svgs.grid,
                       ),
                     ),
 
