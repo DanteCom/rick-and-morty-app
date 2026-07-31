@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppColorScheme {
+  final Brightness brightness;
+
   final Color background;
 
   final Color primary;
@@ -12,7 +14,8 @@ class AppColorScheme {
   final Color textPrimary;
   final Color textSecondary;
 
-  const AppColorScheme({
+  const AppColorScheme(
+    this.brightness, {
     required this.background,
     required this.primary,
     required this.onSurface,
@@ -22,6 +25,7 @@ class AppColorScheme {
   });
 
   static const dark = AppColorScheme(
+    Brightness.dark,
     background: Color(0xFF0B1E2D),
     primary: Color(0xFF43D049),
     surface: Color(0xFF152A3A),
@@ -31,6 +35,7 @@ class AppColorScheme {
   );
 
   static const light = AppColorScheme(
+    Brightness.light,
     background: Color(0xFFFCFCFC),
     primary: Color(0xFF22A2BD),
     onSurface: Color(0xFFF2F2F2),
@@ -41,7 +46,6 @@ class AppColorScheme {
 
   factory AppColorScheme.of(BuildContext context) {
     final brightness = MediaQuery.platformBrightnessOf(context);
-
     return brightness == Brightness.light ? light : dark;
   }
 }

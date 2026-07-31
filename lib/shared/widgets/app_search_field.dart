@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/app/theme/app_color_scheme.dart';
 import 'package:rick_and_morty/app/theme/app_text_styles.dart';
@@ -8,15 +7,16 @@ import 'package:rick_and_morty/shared/widgets/app_svg_picture.dart';
 class AppSearchField extends StatelessWidget {
   const AppSearchField({
     super.key,
-    required this.controller,
     this.focusNode,
+    this.onChanged,
     required this.hintText,
   });
 
   final String hintText;
 
   final FocusNode? focusNode;
-  final TextEditingController controller;
+
+  final void Function(String value)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,13 @@ class AppSearchField extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: TextField(
                   focusNode: focusNode,
-                  controller: controller,
+                  onChanged: onChanged,
+                  cursorColor: color.primary,
+                  onTapOutside: (event) {
+                    if (focusNode != null && focusNode!.hasFocus) {
+                      focusNode!.unfocus();
+                    }
+                  },
                   style: AppTextStyles.s16w500(color.textPrimary),
                   decoration: InputDecoration(
                     isDense: true,
