@@ -7,6 +7,6 @@ class AppLoadingStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = AppColorScheme.of(context);
-    return CupertinoActivityIndicator(color: color.textPrimary);
+    return Center(child: CupertinoActivityIndicator(color: color.textPrimary));
   }
 }
