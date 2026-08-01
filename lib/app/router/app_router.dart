@@ -6,7 +6,7 @@ import 'package:rick_and_morty/app/router/app_router.gr.dart';
 @AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
 class AppRouter extends RootStackRouter {
   @override
-  RouteType get defaultRouteType => RouteType.adaptive();
+  RouteType get defaultRouteType => RouteType.cupertino();
 
   @override
   List<AutoRoute> get routes => [

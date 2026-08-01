@@ -12,12 +12,12 @@
 import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:flutter/cupertino.dart' as _i7;
 import 'package:rick_and_morty/app/app_shell_page.dart' as _i1;
-import 'package:rick_and_morty/features/characters/presentation/character_detail/character_detail_page.dart'
+import 'package:rick_and_morty/features/character/presentation/character_detail/character_detail_page.dart'
     as _i2;
-import 'package:rick_and_morty/features/characters/presentation/characters/characters_page.dart'
+import 'package:rick_and_morty/features/character/presentation/characters/characters_page.dart'
     as _i3;
-import 'package:rick_and_morty/features/episodes/episodes_page.dart' as _i4;
-import 'package:rick_and_morty/features/locations/locations_page.dart' as _i5;
+import 'package:rick_and_morty/features/episode/episodes_page.dart' as _i4;
+import 'package:rick_and_morty/features/location/locations_page.dart' as _i5;
 
 /// generated route for
 /// [_i1.AppShellPage]

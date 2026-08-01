@@ -14,18 +14,21 @@ class AppErrorStateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = AppColorScheme.of(context);
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image.asset(Images.error),
-        SizedBox(height: 20),
-        Text(
-          title ,
-          style: AppTextStyles.s22w500(color.textSecondary),
-          textAlign: TextAlign.center,
-        ),
-      ],
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Flexible(child: Image.asset(Images.error, fit: BoxFit.cover)),
+          SizedBox(height: 20),
+          Text(
+            title,
+            style: AppTextStyles.s22w500(color.textSecondary),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
