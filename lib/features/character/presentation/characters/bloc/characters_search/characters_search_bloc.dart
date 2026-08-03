@@ -30,7 +30,7 @@ class CharactersSearchBloc
       return;
     }
 
-    final result = await _repo.searchCharacter(name);
+    final result = await _repo.searchCharacters(name);
 
     await result.when(
       success: (data) {

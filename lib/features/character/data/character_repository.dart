@@ -47,7 +47,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
   }
 
   @override
-  Future<Result<CharacterResponse, AppFailure>> searchCharacter(
+  Future<Result<CharacterResponse, AppFailure>> searchCharacters(
     String name,
   ) async {
     try {
@@ -73,6 +73,32 @@ class CharacterRepositoryImpl implements CharacterRepository {
     try {
       final response = await _dio.get('character/$id');
       return Result.success(CharacterModel.fromJson(response.data).toEntity());
+    } on DioException catch (e) {
+      return Result.error(e.toAppFailure());
+    } catch (_) {
+      return Result.error(AppFailure.unknown());
+    }
+  }
+
+  @override
+  Future<Result<List<Character>, AppFailure>> getCharactersByUrls(
+    List<String> urls,
+  ) async {
+    try {
+      final ids = urls.map((e) => e.split('/').last).join(',');
+
+      final response = await _dio.get('/episode/$ids');
+      final data = response.data;
+
+      if (data is List) {
+        final characters = data
+            .map((e) => CharacterModel.fromJson(e).toEntity())
+            .toList();
+        return Result.success(characters);
+      } else {
+        final characters = [CharacterModel.fromJson(data).toEntity()];
+        return Result.success(characters);
+      }
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {

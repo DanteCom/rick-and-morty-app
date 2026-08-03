@@ -17,7 +17,8 @@ import 'package:rick_and_morty/features/character/presentation/character_detail/
 import 'package:rick_and_morty/features/character/presentation/characters/characters_page.dart'
     as _i3;
 import 'package:rick_and_morty/features/episode/episodes_page.dart' as _i4;
-import 'package:rick_and_morty/features/location/locations_page.dart' as _i5;
+import 'package:rick_and_morty/features/location/presentation/locations/locations_page.dart'
+    as _i5;
 
 /// generated route for
 /// [_i1.AppShellPage]

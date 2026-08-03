@@ -88,6 +88,18 @@ class _CharactersPageState extends State<CharactersPage> {
     }
   }
 
+  void _onSearchButton() {
+    _scrollController
+        .animateTo(
+          0.0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        )
+        .whenComplete(() {
+          if (!_focusNode.hasFocus) _focusNode.requestFocus();
+        });
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -122,17 +134,7 @@ class _CharactersPageState extends State<CharactersPage> {
                 CharactersSearchEvent.search(value),
               ),
               onGridButton: () => setState(() => isGrid = !isGrid),
-              onSearchButton: () {
-                _scrollController
-                    .animateTo(
-                      0.0,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    )
-                    .whenComplete(() {
-                      if (!_focusNode.hasFocus) _focusNode.requestFocus();
-                    });
-              },
+              onSearchButton: _onSearchButton,
             ),
             Expanded(
               child: Padding(

@@ -44,6 +44,8 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
 
     final result = await _repo.getNextPage(event.url);
 
+    print(event.url);
+
     result.when(
       success: (data) {
         final characters = <Character>[

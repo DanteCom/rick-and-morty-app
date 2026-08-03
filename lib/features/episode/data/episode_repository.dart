@@ -5,15 +5,15 @@ import 'package:rick_and_morty/core/failure/app_failure.dart';
 import 'package:rick_and_morty/core/extensions/dio_extension.dart';
 import 'package:rick_and_morty/features/episode/data/models/models.dart';
 import 'package:rick_and_morty/features/episode/domain/episode.dart';
-import 'package:rick_and_morty/features/episode/domain/episodes_repo.dart';
+import 'package:rick_and_morty/features/episode/domain/episode_repository.dart';
 
 @LazySingleton(as: EpisodeRepository)
-class EpisodeRepoImpl implements EpisodeRepository {
+class EpisodesRepositoryImpl implements EpisodeRepository {
   final Dio _dio;
-  const EpisodeRepoImpl({required this._dio});
+  const EpisodesRepositoryImpl({required this._dio});
 
   @override
-  Future<Result<List<Episode>, AppFailure>> getEpisodesByIds(
+  Future<Result<List<Episode>, AppFailure>> getEpisodesByUrls(
     List<String> urls,
   ) async {
     try {
@@ -24,11 +24,11 @@ class EpisodeRepoImpl implements EpisodeRepository {
 
       if (data is List) {
         final episodes = data
-            .map((e) => EpisodeModel.fromJson(e).toEntitiy())
+            .map((e) => EpisodeModel.fromJson(e).toEntity())
             .toList();
         return Result.success(episodes);
       } else {
-        final episodes = [EpisodeModel.fromJson(data).toEntitiy()];
+        final episodes = [EpisodeModel.fromJson(data).toEntity()];
         return Result.success(episodes);
       }
     } on DioException catch (e) {
