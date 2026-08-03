@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:rick_and_morty/app/theme/app_color_scheme.dart';
@@ -21,7 +19,7 @@ class CharacterDetailPageHeader extends StatelessWidget {
     required this.progress,
   });
 
-  final double _minHeroCardHeight = 256;
+  final double _minAvatarSize = 176;
 
   double _progressInRange(double start, double end) {
     return ((progress - start) / (end - start)).clamp(0.0, 1.0);
@@ -31,7 +29,7 @@ class CharacterDetailPageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = AppColorScheme.of(context);
 
-    final titleTextProgress = _progressInRange(0.3, 1.0);
+    final titleTextProgress = _progressInRange(0.7, 1.0);
     final bgImageProgress = _progressInRange(0.0, 0.3);
 
     return LayoutBuilder(
@@ -45,11 +43,7 @@ class CharacterDetailPageHeader extends StatelessWidget {
               children: [
                 Expanded(child: _BGPosterImage(character: character)),
                 SizedBox(
-                  height: lerpDouble(
-                    _minHeroCardHeight / 1.5,
-                    0.0,
-                    bgImageProgress,
-                  ),
+                  height: lerpDouble(_minAvatarSize / 2, 0.0, bgImageProgress),
                 ),
               ],
             ),
@@ -59,10 +53,10 @@ class CharacterDetailPageHeader extends StatelessWidget {
                 Alignment.center,
                 bgImageProgress,
               )!,
-              child: _HeroCard(
+              child: _Avatar(
                 maxWidth: maxWidth,
                 maxHeight: maxHeight,
-                minHeight: _minHeroCardHeight,
+                minSize: _minAvatarSize,
                 character: character,
                 progress: progress,
               ),
@@ -71,28 +65,33 @@ class CharacterDetailPageHeader extends StatelessWidget {
               left: 24,
               right: 24,
               child: SafeArea(
-                child: Stack(
-                  alignment: Alignment.center,
+                child: Row(
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: CupertinoButton(
-                        minimumSize: Size.zero,
-                        padding: EdgeInsets.zero,
-                        onPressed: () => context.pop(),
-                        child: Icon(
-                          CupertinoIcons.arrow_left,
-                          color: Colors.white,
+                    CupertinoButton(
+                      minimumSize: Size.zero,
+                      padding: EdgeInsets.zero,
+                      onPressed: () => context.pop(),
+                      child: Icon(
+                        CupertinoIcons.arrow_left,
+                        color: color.textPrimary,
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Opacity(
+                          opacity: titleTextProgress,
+                          child: Text(
+                            character.name,
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.s34w400(color.textPrimary),
+                          ),
                         ),
                       ),
                     ),
-                    Opacity(
-                      opacity: titleTextProgress,
-                      child: Text(
-                        character.name,
-                        style: AppTextStyles.s34w400(color.textPrimary),
-                      ),
-                    ),
+                    SizedBox(width: 24),
                   ],
                 ),
               ),
@@ -104,10 +103,10 @@ class CharacterDetailPageHeader extends StatelessWidget {
   }
 }
 
-class _HeroCard extends StatelessWidget {
-  const _HeroCard({
+class _Avatar extends StatelessWidget {
+  const _Avatar({
     required this.maxHeight,
-    required this.minHeight,
+    required this.minSize,
     required this.maxWidth,
     required this.character,
     required this.progress,
@@ -115,8 +114,8 @@ class _HeroCard extends StatelessWidget {
 
   final Character character;
   final double maxHeight;
-  final double minHeight;
   final double maxWidth;
+  final double minSize;
   final double progress;
 
   double _progressInRange(double start, double end) {
@@ -134,53 +133,21 @@ class _HeroCard extends StatelessWidget {
     )!;
 
     final opacity = _progressInRange(0.0, 0.8);
-    final textProgress = _progressInRange(0.0, 0.2);
 
-    return SizedBox(
-      height: lerpDouble(minHeight, maxHeight, progress),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            width: lerpDouble(176, maxWidth, opacity),
-            height: lerpDouble(176, maxHeight, opacity),
-            padding: EdgeInsets.all(8),
-            constraints: BoxConstraints.tightFor(),
-            decoration: BoxDecoration(
-              borderRadius: border,
-              color: color.onSurface,
-            ),
-            child: Opacity(
-              opacity: 1 - opacity,
-              child: ClipRRect(
-                borderRadius: border,
-                child: AppImage.network(character.image),
-              ),
-            ),
-          ),
-          SizedBox(height: lerpDouble(10, 0, textProgress)),
-          Align(
-            heightFactor: 1 - textProgress,
-            child: Opacity(
-              opacity: 1 - textProgress,
-              child: Column(
-                children: [
-                  Text(
-                    character.name,
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.s34w400(color.textPrimary),
-                  ),
-                  Text(
-                    character.status.name.toUpperCase(),
-                    style: AppTextStyles.s15w500(Color(0xFF43D049)),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+    return Container(
+      width: lerpDouble(minSize, maxWidth, opacity),
+      height: lerpDouble(minSize, maxHeight, opacity),
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        borderRadius: border,
+        color: Color.lerp(color.background, color.onSurface, progress),
+      ),
+      child: Opacity(
+        opacity: 1 - opacity,
+        child: ClipRRect(
+          borderRadius: border,
+          child: AppImage.network(character.image),
+        ),
       ),
     );
   }

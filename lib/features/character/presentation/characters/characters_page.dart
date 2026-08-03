@@ -178,7 +178,7 @@ class _CharactersPageState extends State<CharactersPage> {
                                           crossAxisCount: isGrid ? 2 : 1,
                                           crossAxisSpacing: 16,
                                           mainAxisSpacing: 24,
-                                          mainAxisExtent: isGrid ? 200 : 74,
+                                          mainAxisExtent: isGrid ? 190 : 74,
                                         ),
                                     itemBuilder: (context, index) {
                                       final character =
@@ -203,7 +203,7 @@ class _CharactersPageState extends State<CharactersPage> {
                                         crossAxisCount: isGrid ? 2 : 1,
                                         crossAxisSpacing: 16,
                                         mainAxisSpacing: 24,
-                                        mainAxisExtent: isGrid ? 200 : 74,
+                                        mainAxisExtent: isGrid ? 190 : 74,
                                       ),
                                   itemBuilder: (context, index) {
                                     final character =

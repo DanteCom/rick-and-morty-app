@@ -29,24 +29,30 @@ class CharacterListCard extends StatelessWidget {
             child: AppImage.network(character.image, fit: BoxFit.cover),
           ),
           SizedBox(width: 18),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                character.status.name.capitalize(),
-                style: AppTextStyles.s15w500(Color(0xFF43D049)),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsetsGeometry.symmetric(vertical: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    character.status.name.capitalize(),
+                    style: AppTextStyles.s15w500(Color(0xFF43D049)),
+                  ),
+                  Text(
+                    character.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.s16w500(color.textPrimary),
+                  ),
+                  Text(
+                    '${character.species}, ${character.gender.name}',
+                    style: AppTextStyles.s16w500(color.textSecondary),
+                  ),
+                ],
               ),
-              Text(
-                character.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.s16w500(color.textPrimary),
-              ),
-              Text(
-                '${character.species}, ${character.gender.name}',
-                style: AppTextStyles.s16w500(color.textSecondary),
-              ),
-            ],
+            ),
           ),
         ],
       ),

@@ -46,7 +46,7 @@ class CharacterDetailPage extends StatelessWidget implements AutoRouteWrapper {
 
     final padding = MediaQuery.paddingOf(context);
 
-    final maxHeight = 400 + padding.top;
+    final maxHeight = 300 + padding.top;
     final minHeight = 50 + padding.top;
 
     return Scaffold(
@@ -79,13 +79,21 @@ class CharacterDetailPage extends StatelessWidget implements AutoRouteWrapper {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
+                    SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 36,
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Column(
                         children: [
+                          Text(
+                            character.name,
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.s34w400(color.textPrimary),
+                          ),
+                          Text(
+                            character.status.name.toUpperCase(),
+                            style: AppTextStyles.s15w500(Color(0xFF43D049)),
+                          ),
+                          SizedBox(height: 20),
                           Row(
                             children: [
                               Expanded(
@@ -144,12 +152,14 @@ class CharacterDetailPage extends StatelessWidget implements AutoRouteWrapper {
                         ],
                       ),
                     ),
-                    Container(
-                      height: 3,
-                      width: double.infinity,
-                      color: color.onSurface,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 36),
+                      child: Container(
+                        height: 3,
+                        width: double.infinity,
+                        color: color.onSurface,
+                      ),
                     ),
-                    SizedBox(height: 36),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Column(
