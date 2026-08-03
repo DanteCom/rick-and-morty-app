@@ -51,4 +51,5 @@ UI дизайн взят из Figma Community:
 
 <p align="center">
   <img src="screenshots/characters.png" width="24%">
+  <img src="screenshots/locations.png" width="24%">
 </p>

@@ -6,8 +6,10 @@ import 'package:rick_and_morty/features/character/domain/entities/character_resp
 abstract interface class CharacterRepository {
   Future<Result<CharacterResponse, AppFailure>> getInitialPage();
   Future<Result<CharacterResponse, AppFailure>> getNextPage(String url);
-
-  Future<Result<CharacterResponse, AppFailure>> searchCharacter(String name);
+  Future<Result<List<Character>, AppFailure>> getCharactersByUrls(
+    List<String> urls,
+  );
 
   Future<Result<Character, AppFailure>> getCharacter(int id);
+  Future<Result<CharacterResponse, AppFailure>> searchCharacters(String name);
 }

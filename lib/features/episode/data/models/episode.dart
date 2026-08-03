@@ -17,13 +17,13 @@ abstract class EpisodeModel with _$EpisodeModel {
 
   const EpisodeModel._();
 
-  Episode toEntitiy() => Episode(
+  Episode toEntity() => Episode(
     id: id,
     name: name,
     airDate: airDate,
     episode: episode,
     characters: characters ?? [],
     url: url,
-    created: DateTime.parse( created),
+    created: DateTime.parse(created),
   );
 }
