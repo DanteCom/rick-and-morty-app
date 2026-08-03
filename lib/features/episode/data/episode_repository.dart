@@ -19,14 +19,18 @@ class EpisodeRepoImpl implements EpisodeRepository {
     try {
       final ids = urls.map((e) => e.split('/').last).join(',');
 
-      final response = await _dio.get('/location/$ids');
-      final data = response.data as List;
+      final response = await _dio.get('/episode/$ids');
+      final data = response.data;
 
-      final episodes = data
-          .map((e) => EpisodeModel.fromJson(e).toEntitiy())
-          .toList();
-
-      return Result.success(episodes);
+      if (data is List) {
+        final episodes = data
+            .map((e) => EpisodeModel.fromJson(e).toEntitiy())
+            .toList();
+        return Result.success(episodes);
+      } else {
+        final episodes = [EpisodeModel.fromJson(data).toEntitiy()];
+        return Result.success(episodes);
+      }
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
