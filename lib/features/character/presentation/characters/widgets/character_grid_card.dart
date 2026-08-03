@@ -16,7 +16,8 @@ class CharacterGridCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = AppColorScheme.of(context);
     return CupertinoButton(
-      onPressed: () => context.pushRoute(CharacterDetailRoute(id: character.id)),
+      onPressed: () =>
+          context.pushRoute(CharacterDetailRoute(id: character.id)),
       padding: EdgeInsets.zero,
       child: Column(
         children: [
@@ -28,20 +29,27 @@ class CharacterGridCard extends StatelessWidget {
             child: AppImage.network(character.image, fit: BoxFit.cover),
           ),
           SizedBox(height: 18),
-          Text(
-            character.status.name.capitalize(),
-            style: AppTextStyles.s12w400(Color(0xFF43D049)),
-          ),
-          Text(
-            character.name,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.s15w500(color.textPrimary),
-          ),
-          Text(
-            '${character.species}, ${character.gender.name}',
-            style: AppTextStyles.s12w400(color.textSecondary),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  character.status.name.capitalize(),
+                  style: AppTextStyles.s12w400(Color(0xFF43D049)),
+                ),
+                Text(
+                  character.name,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.s15w500(color.textPrimary),
+                ),
+                Text(
+                  '${character.species}, ${character.gender.name}',
+                  style: AppTextStyles.s12w400(color.textSecondary),
+                ),
+              ],
+            ),
           ),
         ],
       ),

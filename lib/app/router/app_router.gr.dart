@@ -10,7 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:flutter/cupertino.dart' as _i7;
+import 'package:flutter/material.dart' as _i7;
 import 'package:rick_and_morty/app/app_shell_page.dart' as _i1;
 import 'package:rick_and_morty/features/character/presentation/character_detail/character_detail_page.dart'
     as _i2;
@@ -54,7 +54,9 @@ class CharacterDetailRoute extends _i6.PageRouteInfo<CharacterDetailRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<CharacterDetailRouteArgs>();
-      return _i2.CharacterDetailPage(args.id, key: args.key);
+      return _i6.WrappedRoute(
+        child: _i2.CharacterDetailPage(args.id, key: args.key),
+      );
     },
   );
 }
