@@ -12,8 +12,8 @@ _LocationModel _$LocationModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       type: json['type'] as String,
       dimension: json['dimension'] as String,
-      residentUrls: (json['residentUrls'] as List<dynamic>?)
-          ?.map((e) => e as String)
+      residents: (json['residents'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
       url: json['url'] as String,
       created: json['created'] as String,
@@ -25,7 +25,7 @@ Map<String, dynamic> _$LocationModelToJson(_LocationModel instance) =>
       'name': instance.name,
       'type': instance.type,
       'dimension': instance.dimension,
-      'residentUrls': instance.residentUrls,
+      'residents': instance.residents,
       'url': instance.url,
       'created': instance.created,
     };

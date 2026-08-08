@@ -20,4 +20,7 @@ class AppTextStyles {
 
   static TextStyle s22w500(Color color) =>
       TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: color);
+
+  static TextStyle s24w700(Color color) =>
+      TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: color);
 }

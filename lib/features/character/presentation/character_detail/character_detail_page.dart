@@ -201,8 +201,6 @@ class CharacterDetailPage extends StatelessWidget implements AutoRouteWrapper {
                                 EpisodeCard(episode: episodes[index]),
                           );
                         },
-                        loading: () =>
-                            SliverToBoxAdapter(child: AppLoadingStateWidget()),
                         error: (failure) => SliverToBoxAdapter(
                           child: AppErrorStateWidget(
                             title: failure.maybeWhen(
@@ -212,7 +210,8 @@ class CharacterDetailPage extends StatelessWidget implements AutoRouteWrapper {
                             ),
                           ),
                         ),
-                        orElse: () => SliverToBoxAdapter(),
+                        orElse: () =>
+                            SliverToBoxAdapter(child: AppLoadingStateWidget()),
                       ),
                     ),
               ),

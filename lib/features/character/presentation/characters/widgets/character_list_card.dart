@@ -20,6 +20,7 @@ class CharacterListCard extends StatelessWidget {
           context.pushRoute(CharacterDetailRoute(id: character.id)),
       padding: EdgeInsets.zero,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             clipBehavior: Clip.antiAlias,
@@ -31,7 +32,7 @@ class CharacterListCard extends StatelessWidget {
           SizedBox(width: 18),
           Expanded(
             child: Padding(
-              padding: EdgeInsetsGeometry.symmetric(vertical: 8),
+              padding: EdgeInsetsGeometry.symmetric(vertical: 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
