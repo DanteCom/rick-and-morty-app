@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LocationModel {
 
- int get id; String get name; String get type; String get dimension; List<String>? get residentUrls; String get url; String get created;
+ int get id; String get name; String get type; String get dimension; List<String> get residents; String get url; String get created;
 /// Create a copy of LocationModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $LocationModelCopyWith<LocationModel> get copyWith => _$LocationModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.dimension, dimension) || other.dimension == dimension)&&const DeepCollectionEquality().equals(other.residentUrls, residentUrls)&&(identical(other.url, url) || other.url == url)&&(identical(other.created, created) || other.created == created));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.dimension, dimension) || other.dimension == dimension)&&const DeepCollectionEquality().equals(other.residents, residents)&&(identical(other.url, url) || other.url == url)&&(identical(other.created, created) || other.created == created));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,dimension,const DeepCollectionEquality().hash(residentUrls),url,created);
+int get hashCode => Object.hash(runtimeType,id,name,type,dimension,const DeepCollectionEquality().hash(residents),url,created);
 
 @override
 String toString() {
-  return 'LocationModel(id: $id, name: $name, type: $type, dimension: $dimension, residentUrls: $residentUrls, url: $url, created: $created)';
+  return 'LocationModel(id: $id, name: $name, type: $type, dimension: $dimension, residents: $residents, url: $url, created: $created)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $LocationModelCopyWith<$Res>  {
   factory $LocationModelCopyWith(LocationModel value, $Res Function(LocationModel) _then) = _$LocationModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String type, String dimension, List<String>? residentUrls, String url, String created
+ int id, String name, String type, String dimension, List<String> residents, String url, String created
 });
 
 
@@ -65,14 +65,14 @@ class _$LocationModelCopyWithImpl<$Res>
 
 /// Create a copy of LocationModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? type = null,Object? dimension = null,Object? residentUrls = freezed,Object? url = null,Object? created = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? type = null,Object? dimension = null,Object? residents = null,Object? url = null,Object? created = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,dimension: null == dimension ? _self.dimension : dimension // ignore: cast_nullable_to_non_nullable
-as String,residentUrls: freezed == residentUrls ? _self.residentUrls : residentUrls // ignore: cast_nullable_to_non_nullable
-as List<String>?,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,residents: null == residents ? _self.residents : residents // ignore: cast_nullable_to_non_nullable
+as List<String>,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,created: null == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -159,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String type,  String dimension,  List<String>? residentUrls,  String url,  String created)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String type,  String dimension,  List<String> residents,  String url,  String created)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LocationModel() when $default != null:
-return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residentUrls,_that.url,_that.created);case _:
+return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residents,_that.url,_that.created);case _:
   return orElse();
 
 }
@@ -180,10 +180,10 @@ return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residentUrl
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String type,  String dimension,  List<String>? residentUrls,  String url,  String created)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String type,  String dimension,  List<String> residents,  String url,  String created)  $default,) {final _that = this;
 switch (_that) {
 case _LocationModel():
-return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residentUrls,_that.url,_that.created);case _:
+return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residents,_that.url,_that.created);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +200,10 @@ return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residentUrl
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String type,  String dimension,  List<String>? residentUrls,  String url,  String created)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String type,  String dimension,  List<String> residents,  String url,  String created)?  $default,) {final _that = this;
 switch (_that) {
 case _LocationModel() when $default != null:
-return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residentUrls,_that.url,_that.created);case _:
+return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residents,_that.url,_that.created);case _:
   return null;
 
 }
@@ -215,20 +215,18 @@ return $default(_that.id,_that.name,_that.type,_that.dimension,_that.residentUrl
 @JsonSerializable()
 
 class _LocationModel extends LocationModel {
-  const _LocationModel({required this.id, required this.name, required this.type, required this.dimension, required final  List<String>? residentUrls, required this.url, required this.created}): _residentUrls = residentUrls,super._();
+  const _LocationModel({required this.id, required this.name, required this.type, required this.dimension, required final  List<String> residents, required this.url, required this.created}): _residents = residents,super._();
   factory _LocationModel.fromJson(Map<String, dynamic> json) => _$LocationModelFromJson(json);
 
 @override final  int id;
 @override final  String name;
 @override final  String type;
 @override final  String dimension;
- final  List<String>? _residentUrls;
-@override List<String>? get residentUrls {
-  final value = _residentUrls;
-  if (value == null) return null;
-  if (_residentUrls is EqualUnmodifiableListView) return _residentUrls;
+ final  List<String> _residents;
+@override List<String> get residents {
+  if (_residents is EqualUnmodifiableListView) return _residents;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
+  return EqualUnmodifiableListView(_residents);
 }
 
 @override final  String url;
@@ -247,16 +245,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.dimension, dimension) || other.dimension == dimension)&&const DeepCollectionEquality().equals(other._residentUrls, _residentUrls)&&(identical(other.url, url) || other.url == url)&&(identical(other.created, created) || other.created == created));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.dimension, dimension) || other.dimension == dimension)&&const DeepCollectionEquality().equals(other._residents, _residents)&&(identical(other.url, url) || other.url == url)&&(identical(other.created, created) || other.created == created));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,dimension,const DeepCollectionEquality().hash(_residentUrls),url,created);
+int get hashCode => Object.hash(runtimeType,id,name,type,dimension,const DeepCollectionEquality().hash(_residents),url,created);
 
 @override
 String toString() {
-  return 'LocationModel(id: $id, name: $name, type: $type, dimension: $dimension, residentUrls: $residentUrls, url: $url, created: $created)';
+  return 'LocationModel(id: $id, name: $name, type: $type, dimension: $dimension, residents: $residents, url: $url, created: $created)';
 }
 
 
@@ -267,7 +265,7 @@ abstract mixin class _$LocationModelCopyWith<$Res> implements $LocationModelCopy
   factory _$LocationModelCopyWith(_LocationModel value, $Res Function(_LocationModel) _then) = __$LocationModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String type, String dimension, List<String>? residentUrls, String url, String created
+ int id, String name, String type, String dimension, List<String> residents, String url, String created
 });
 
 
@@ -284,14 +282,14 @@ class __$LocationModelCopyWithImpl<$Res>
 
 /// Create a copy of LocationModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? type = null,Object? dimension = null,Object? residentUrls = freezed,Object? url = null,Object? created = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? type = null,Object? dimension = null,Object? residents = null,Object? url = null,Object? created = null,}) {
   return _then(_LocationModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,dimension: null == dimension ? _self.dimension : dimension // ignore: cast_nullable_to_non_nullable
-as String,residentUrls: freezed == residentUrls ? _self._residentUrls : residentUrls // ignore: cast_nullable_to_non_nullable
-as List<String>?,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,residents: null == residents ? _self._residents : residents // ignore: cast_nullable_to_non_nullable
+as List<String>,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,created: null == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
 as String,
   ));

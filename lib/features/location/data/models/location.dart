@@ -7,7 +7,7 @@ abstract class LocationModel with _$LocationModel {
     required String name,
     required String type,
     required String dimension,
-    required List<String>? residentUrls,
+    required List<String> residents,
     required String url,
     required String created,
   }) = _LocationModel;
@@ -22,7 +22,7 @@ abstract class LocationModel with _$LocationModel {
     name: name,
     type: type,
     dimension: dimension,
-    residentUrls: residentUrls ?? [],
+    residentUrls: residents,
     url: url,
     created: created,
   );

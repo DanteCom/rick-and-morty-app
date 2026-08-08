@@ -34,6 +34,8 @@ import 'package:rick_and_morty/features/location/data/location_repository.dart'
     as _i930;
 import 'package:rick_and_morty/features/location/domain/location_repository.dart'
     as _i33;
+import 'package:rick_and_morty/features/location/presentation/location_detail/bloc/location_detail/location_detail_bloc.dart'
+    as _i122;
 import 'package:rick_and_morty/features/location/presentation/location_detail/bloc/location_residents/location_residents_bloc.dart'
     as _i318;
 import 'package:rick_and_morty/features/location/presentation/locations/bloc/locations/locations_bloc.dart'
@@ -68,6 +70,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i365.CharactersSearchBloc>(
       () => _i365.CharactersSearchBloc(gh<_i302.CharacterRepository>()),
+    );
+    gh.factory<_i122.LocationDetailBloc>(
+      () => _i122.LocationDetailBloc(gh<_i33.LocationRepository>()),
     );
     gh.factory<_i222.LocationsBloc>(
       () => _i222.LocationsBloc(gh<_i33.LocationRepository>()),

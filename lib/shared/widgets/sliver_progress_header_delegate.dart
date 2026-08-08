@@ -27,5 +27,5 @@ class SliverProgressHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      false;
+      maxExtent != oldDelegate.maxExtent || minExtent != oldDelegate.minExtent;
 }

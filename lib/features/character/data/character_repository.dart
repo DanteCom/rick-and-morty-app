@@ -87,7 +87,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
     try {
       final ids = urls.map((e) => e.split('/').last).join(',');
 
-      final response = await _dio.get('/episode/$ids');
+      final response = await _dio.get('character/$ids');
       final data = response.data;
 
       if (data is List) {

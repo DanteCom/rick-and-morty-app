@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_and_morty/app/router/app_router.gr.dart';
 import 'package:rick_and_morty/app/theme/app_color_scheme.dart';
 import 'package:rick_and_morty/app/theme/app_text_styles.dart';
 import 'package:rick_and_morty/core/di/injectable.dart';
@@ -232,39 +234,43 @@ class LocationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = AppColorScheme.of(context);
 
-    return Container(
-      height: 220,
-      width: double.infinity,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: color.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: color.brightness == Brightness.light
-            ? Border.all(color: Color(0xFFE0E0E0))
-            : null,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(child: Image.asset(Images.park, fit: BoxFit.fill)),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  location.name,
-                  style: AppTextStyles.s16w500(color.textPrimary),
-                ),
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
+      onPressed: () => context.pushRoute(LocationDetailRoute(id: location.id)),
+      child: Container(
+        height: 220,
+        width: double.infinity,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: color.surface,
+          borderRadius: BorderRadius.circular(20),
+          border: color.brightness == Brightness.light
+              ? Border.all(color: Color(0xFFE0E0E0))
+              : null,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(child: Image.asset(Images.park, fit: BoxFit.fill)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    location.name,
+                    style: AppTextStyles.s16w500(color.textPrimary),
+                  ),
 
-                Text(
-                  location.dimension,
-                  style: AppTextStyles.s16w500(color.textSecondary),
-                ),
-              ],
+                  Text(
+                    location.dimension,
+                    style: AppTextStyles.s16w500(color.textSecondary),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
