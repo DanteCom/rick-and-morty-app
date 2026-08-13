@@ -21,7 +21,7 @@ class AppErrorStateWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(child: Image.asset(Images.error, fit: BoxFit.cover)),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             title,
             style: AppTextStyles.s22w500(color.textSecondary),

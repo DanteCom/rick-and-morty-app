@@ -9,28 +9,31 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 import 'package:rick_and_morty/app/app_shell_page.dart' as _i1;
-import 'package:rick_and_morty/features/character/presentation/character_detail/character_detail_page.dart'
-    as _i2;
-import 'package:rick_and_morty/features/character/presentation/characters/characters_page.dart'
+import 'package:rick_and_morty/features/character/presentation/character/page/characters_page.dart'
     as _i3;
-import 'package:rick_and_morty/features/episode/episodes_page.dart' as _i4;
-import 'package:rick_and_morty/features/location/presentation/location_detail/location_detail_page.dart'
+import 'package:rick_and_morty/features/character/presentation/character_detail/page/character_detail_page.dart'
+    as _i2;
+import 'package:rick_and_morty/features/episode/presentation/episode/page/episodes_page.dart'
     as _i5;
-import 'package:rick_and_morty/features/location/presentation/locations/locations_page.dart'
+import 'package:rick_and_morty/features/episode/presentation/episode_detail/page/episode_detail_page.dart'
+    as _i4;
+import 'package:rick_and_morty/features/location/presentation/location/page/locations_page.dart'
+    as _i7;
+import 'package:rick_and_morty/features/location/presentation/location_detail/page/location_detail_page.dart'
     as _i6;
 
 /// generated route for
 /// [_i1.AppShellPage]
-class AppShellRoute extends _i7.PageRouteInfo<void> {
-  const AppShellRoute({List<_i7.PageRouteInfo>? children})
+class AppShellRoute extends _i8.PageRouteInfo<void> {
+  const AppShellRoute({List<_i8.PageRouteInfo>? children})
     : super(AppShellRoute.name, initialChildren: children);
 
   static const String name = 'AppShellRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i1.AppShellPage();
@@ -40,11 +43,11 @@ class AppShellRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.CharacterDetailPage]
-class CharacterDetailRoute extends _i7.PageRouteInfo<CharacterDetailRouteArgs> {
+class CharacterDetailRoute extends _i8.PageRouteInfo<CharacterDetailRouteArgs> {
   CharacterDetailRoute({
     required int id,
-    _i8.Key? key,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          CharacterDetailRoute.name,
          args: CharacterDetailRouteArgs(id: id, key: key),
@@ -53,11 +56,11 @@ class CharacterDetailRoute extends _i7.PageRouteInfo<CharacterDetailRouteArgs> {
 
   static const String name = 'CharacterDetailRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<CharacterDetailRouteArgs>();
-      return _i7.WrappedRoute(
+      return _i8.WrappedRoute(
         child: _i2.CharacterDetailPage(args.id, key: args.key),
       );
     },
@@ -69,7 +72,7 @@ class CharacterDetailRouteArgs {
 
   final int id;
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -89,43 +92,92 @@ class CharacterDetailRouteArgs {
 
 /// generated route for
 /// [_i3.CharactersPage]
-class CharactersRoute extends _i7.PageRouteInfo<void> {
-  const CharactersRoute({List<_i7.PageRouteInfo>? children})
+class CharactersRoute extends _i8.PageRouteInfo<void> {
+  const CharactersRoute({List<_i8.PageRouteInfo>? children})
     : super(CharactersRoute.name, initialChildren: children);
 
   static const String name = 'CharactersRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i3.CharactersPage();
+      return _i8.WrappedRoute(child: const _i3.CharactersPage());
     },
   );
 }
 
 /// generated route for
-/// [_i4.EpisodesPage]
-class EpisodesRoute extends _i7.PageRouteInfo<void> {
-  const EpisodesRoute({List<_i7.PageRouteInfo>? children})
+/// [_i4.EpisodeDetailPage]
+class EpisodeDetailRoute extends _i8.PageRouteInfo<EpisodeDetailRouteArgs> {
+  EpisodeDetailRoute({
+    required int id,
+    _i9.Key? key,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
+         EpisodeDetailRoute.name,
+         args: EpisodeDetailRouteArgs(id: id, key: key),
+         initialChildren: children,
+       );
+
+  static const String name = 'EpisodeDetailRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<EpisodeDetailRouteArgs>();
+      return _i8.WrappedRoute(
+        child: _i4.EpisodeDetailPage(args.id, key: args.key),
+      );
+    },
+  );
+}
+
+class EpisodeDetailRouteArgs {
+  const EpisodeDetailRouteArgs({required this.id, this.key});
+
+  final int id;
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'EpisodeDetailRouteArgs{id: $id, key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! EpisodeDetailRouteArgs) return false;
+    return id == other.id && key == other.key;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ key.hashCode;
+}
+
+/// generated route for
+/// [_i5.EpisodesPage]
+class EpisodesRoute extends _i8.PageRouteInfo<void> {
+  const EpisodesRoute({List<_i8.PageRouteInfo>? children})
     : super(EpisodesRoute.name, initialChildren: children);
 
   static const String name = 'EpisodesRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i4.EpisodesPage();
+      return _i8.WrappedRoute(child: const _i5.EpisodesPage());
     },
   );
 }
 
 /// generated route for
-/// [_i5.LocationDetailPage]
-class LocationDetailRoute extends _i7.PageRouteInfo<LocationDetailRouteArgs> {
+/// [_i6.LocationDetailPage]
+class LocationDetailRoute extends _i8.PageRouteInfo<LocationDetailRouteArgs> {
   LocationDetailRoute({
     required int id,
-    _i8.Key? key,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          LocationDetailRoute.name,
          args: LocationDetailRouteArgs(id: id, key: key),
@@ -134,12 +186,12 @@ class LocationDetailRoute extends _i7.PageRouteInfo<LocationDetailRouteArgs> {
 
   static const String name = 'LocationDetailRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<LocationDetailRouteArgs>();
-      return _i7.WrappedRoute(
-        child: _i5.LocationDetailPage(args.id, key: args.key),
+      return _i8.WrappedRoute(
+        child: _i6.LocationDetailPage(args.id, key: args.key),
       );
     },
   );
@@ -150,7 +202,7 @@ class LocationDetailRouteArgs {
 
   final int id;
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -169,17 +221,17 @@ class LocationDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i6.LocationsPage]
-class LocationsRoute extends _i7.PageRouteInfo<void> {
-  const LocationsRoute({List<_i7.PageRouteInfo>? children})
+/// [_i7.LocationsPage]
+class LocationsRoute extends _i8.PageRouteInfo<void> {
+  const LocationsRoute({List<_i8.PageRouteInfo>? children})
     : super(LocationsRoute.name, initialChildren: children);
 
   static const String name = 'LocationsRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i6.LocationsPage();
+      return _i8.WrappedRoute(child: const _i7.LocationsPage());
     },
   );
 }

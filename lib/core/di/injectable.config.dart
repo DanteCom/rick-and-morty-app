@@ -18,30 +18,38 @@ import 'package:rick_and_morty/features/character/data/character_repository.dart
     as _i767;
 import 'package:rick_and_morty/features/character/domain/character_repository.dart'
     as _i302;
-import 'package:rick_and_morty/features/character/presentation/character_detail/bloc/character_detail/character_detail_bloc.dart'
-    as _i964;
-import 'package:rick_and_morty/features/character/presentation/character_detail/bloc/character_episodes/character_episodes_bloc.dart'
-    as _i551;
-import 'package:rick_and_morty/features/character/presentation/characters/bloc/characters/characters_bloc.dart'
-    as _i744;
-import 'package:rick_and_morty/features/character/presentation/characters/bloc/characters_search/characters_search_bloc.dart'
-    as _i365;
+import 'package:rick_and_morty/features/character/presentation/character/cubit/character/character_cubit.dart'
+    as _i643;
+import 'package:rick_and_morty/features/character/presentation/character/cubit/character_search/character_search_cubit.dart'
+    as _i250;
+import 'package:rick_and_morty/features/character/presentation/character_detail/cubit/character_detail/character_detail_cubit.dart'
+    as _i252;
+import 'package:rick_and_morty/features/character/presentation/character_detail/cubit/character_episodes/character_episodes_cubit.dart'
+    as _i413;
 import 'package:rick_and_morty/features/episode/data/episode_repository.dart'
     as _i530;
 import 'package:rick_and_morty/features/episode/domain/episode_repository.dart'
     as _i388;
+import 'package:rick_and_morty/features/episode/presentation/episode/cubit/episode/episode_cubit.dart'
+    as _i572;
+import 'package:rick_and_morty/features/episode/presentation/episode/cubit/episode_search/episode_search_cubit.dart'
+    as _i209;
+import 'package:rick_and_morty/features/episode/presentation/episode_detail/cubit/episode_character_cubit.dart'
+    as _i1020;
+import 'package:rick_and_morty/features/episode/presentation/episode_detail/cubit/episode_detail_cubit.dart'
+    as _i499;
 import 'package:rick_and_morty/features/location/data/location_repository.dart'
     as _i930;
 import 'package:rick_and_morty/features/location/domain/location_repository.dart'
     as _i33;
-import 'package:rick_and_morty/features/location/presentation/location_detail/bloc/location_detail/location_detail_bloc.dart'
-    as _i122;
-import 'package:rick_and_morty/features/location/presentation/location_detail/bloc/location_residents/location_residents_bloc.dart'
-    as _i318;
-import 'package:rick_and_morty/features/location/presentation/locations/bloc/locations/locations_bloc.dart'
-    as _i222;
-import 'package:rick_and_morty/features/location/presentation/locations/bloc/locations_search/locations_search_bloc.dart'
-    as _i108;
+import 'package:rick_and_morty/features/location/presentation/location/cubit/location/location_cubit.dart'
+    as _i981;
+import 'package:rick_and_morty/features/location/presentation/location/cubit/location_search/location_search_cubit.dart'
+    as _i102;
+import 'package:rick_and_morty/features/location/presentation/location_detail/cubit/location_detail/location_detail_cubit.dart'
+    as _i403;
+import 'package:rick_and_morty/features/location/presentation/location_detail/cubit/location_residents/location_residents_cubit.dart'
+    as _i974;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -62,29 +70,41 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i302.CharacterRepository>(
       () => _i767.CharacterRepositoryImpl(dio: gh<_i361.Dio>()),
     );
-    gh.factory<_i964.CharacterDetailBloc>(
-      () => _i964.CharacterDetailBloc(gh<_i302.CharacterRepository>()),
+    gh.factory<_i643.CharacterCubit>(
+      () => _i643.CharacterCubit(gh<_i302.CharacterRepository>()),
     );
-    gh.factory<_i744.CharactersBloc>(
-      () => _i744.CharactersBloc(gh<_i302.CharacterRepository>()),
+    gh.factory<_i250.CharacterSearchCubit>(
+      () => _i250.CharacterSearchCubit(gh<_i302.CharacterRepository>()),
     );
-    gh.factory<_i365.CharactersSearchBloc>(
-      () => _i365.CharactersSearchBloc(gh<_i302.CharacterRepository>()),
+    gh.factory<_i252.CharacterDetailCubit>(
+      () => _i252.CharacterDetailCubit(gh<_i302.CharacterRepository>()),
     );
-    gh.factory<_i122.LocationDetailBloc>(
-      () => _i122.LocationDetailBloc(gh<_i33.LocationRepository>()),
+    gh.factory<_i572.EpisodeCubit>(
+      () => _i572.EpisodeCubit(gh<_i388.EpisodeRepository>()),
     );
-    gh.factory<_i222.LocationsBloc>(
-      () => _i222.LocationsBloc(gh<_i33.LocationRepository>()),
+    gh.factory<_i209.EpisodeSearchCubit>(
+      () => _i209.EpisodeSearchCubit(gh<_i388.EpisodeRepository>()),
     );
-    gh.factory<_i108.LocationsSearchBloc>(
-      () => _i108.LocationsSearchBloc(gh<_i33.LocationRepository>()),
+    gh.factory<_i499.EpisodeDetailCubit>(
+      () => _i499.EpisodeDetailCubit(gh<_i388.EpisodeRepository>()),
     );
-    gh.factory<_i318.LocationResidentsBloc>(
-      () => _i318.LocationResidentsBloc(gh<_i302.CharacterRepository>()),
+    gh.factory<_i981.LocationCubit>(
+      () => _i981.LocationCubit(gh<_i33.LocationRepository>()),
     );
-    gh.factory<_i551.CharacterEpisodesBloc>(
-      () => _i551.CharacterEpisodesBloc(gh<_i388.EpisodeRepository>()),
+    gh.factory<_i102.LocationSearchCubit>(
+      () => _i102.LocationSearchCubit(gh<_i33.LocationRepository>()),
+    );
+    gh.factory<_i403.LocationDetailCubit>(
+      () => _i403.LocationDetailCubit(gh<_i33.LocationRepository>()),
+    );
+    gh.factory<_i1020.EpisodeCharacterCubit>(
+      () => _i1020.EpisodeCharacterCubit(gh<_i302.CharacterRepository>()),
+    );
+    gh.factory<_i974.LocationResidentsCubit>(
+      () => _i974.LocationResidentsCubit(gh<_i302.CharacterRepository>()),
+    );
+    gh.factory<_i413.CharacterEpisodesCubit>(
+      () => _i413.CharacterEpisodesCubit(gh<_i388.EpisodeRepository>()),
     );
     return this;
   }

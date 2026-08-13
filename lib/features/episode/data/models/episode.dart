@@ -1,4 +1,8 @@
-part of 'models.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rick_and_morty/features/episode/domain/entities/episode.dart';
+
+part 'episode.g.dart';
+part 'episode.freezed.dart';
 
 @freezed
 abstract class EpisodeModel with _$EpisodeModel {

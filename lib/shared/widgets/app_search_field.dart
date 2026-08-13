@@ -27,14 +27,14 @@ class AppSearchField extends StatelessWidget {
         color: color.onSurface,
         borderRadius: BorderRadius.circular(40),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
       child: IntrinsicHeight(
         child: Row(
           children: [
-            AppSvgPicture(Svgs.search, color: color.textSecondary),
+            AppSvgPicture.asset(Svgs.search, color: color.textSecondary),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextField(
                   focusNode: focusNode,
                   onChanged: onChanged,
@@ -50,14 +50,16 @@ class AppSearchField extends StatelessWidget {
                     hintText: hintText,
                     hintStyle: AppTextStyles.s16w500(color.textSecondary),
                     contentPadding: EdgeInsets.zero,
-                    border: OutlineInputBorder(borderSide: BorderSide.none),
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                    ),
                   ),
                 ),
               ),
             ),
             Container(width: 1.3, color: color.textSecondary),
-            SizedBox(width: 10),
-            AppSvgPicture(Svgs.filter, color: color.textSecondary),
+            const SizedBox(width: 10),
+            AppSvgPicture.asset(Svgs.filter, color: color.textSecondary),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
-import 'package:rick_and_morty/features/location/data/models/models.dart';
 import 'package:rick_and_morty/features/location/domain/entities/location.dart';
+import 'package:rick_and_morty/features/location/data/models/location_response.dart';
 
 class LocationResponse {
   final List<Location> locations;

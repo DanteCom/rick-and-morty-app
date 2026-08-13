@@ -3,7 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:rick_and_morty/core/result/result.dart';
 import 'package:rick_and_morty/core/failure/app_failure.dart';
 import 'package:rick_and_morty/core/extensions/dio_extension.dart';
-import 'package:rick_and_morty/features/character/data/models/models.dart';
+import 'package:rick_and_morty/features/character/data/models/character.dart';
+import 'package:rick_and_morty/features/character/data/models/character_response.dart';
 import 'package:rick_and_morty/features/character/domain/character_repository.dart';
 import 'package:rick_and_morty/features/character/domain/entities/character.dart';
 import 'package:rick_and_morty/features/character/domain/entities/character_response.dart';
@@ -25,7 +26,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 
@@ -42,7 +43,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 
@@ -64,7 +65,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 
@@ -76,7 +77,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 
@@ -102,7 +103,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 }

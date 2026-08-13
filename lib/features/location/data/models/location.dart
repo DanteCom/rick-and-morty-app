@@ -1,4 +1,8 @@
-part of 'models.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rick_and_morty/features/location/domain/entities/location.dart';
+
+part 'location.g.dart';
+part 'location.freezed.dart';
 
 @freezed
 abstract class LocationModel with _$LocationModel {

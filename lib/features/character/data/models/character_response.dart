@@ -1,4 +1,9 @@
-part of 'models.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rick_and_morty/features/character/data/models/character.dart';
+import 'package:rick_and_morty/features/character/domain/entities/character_response.dart';
+
+part 'character_response.g.dart';
+part 'character_response.freezed.dart';
 
 @freezed
 abstract class CharacterResponseModel with _$CharacterResponseModel {

@@ -3,7 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:rick_and_morty/core/extensions/dio_extension.dart';
 import 'package:rick_and_morty/core/failure/app_failure.dart';
 import 'package:rick_and_morty/core/result/result.dart';
-import 'package:rick_and_morty/features/location/data/models/models.dart';
+import 'package:rick_and_morty/features/location/data/models/location.dart';
+import 'package:rick_and_morty/features/location/data/models/location_response.dart';
 import 'package:rick_and_morty/features/location/domain/entities/location.dart';
 import 'package:rick_and_morty/features/location/domain/entities/location_response.dart';
 import 'package:rick_and_morty/features/location/domain/location_repository.dart';
@@ -23,7 +24,7 @@ class LocationRepositoryImpl implements LocationRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 
@@ -37,7 +38,7 @@ class LocationRepositoryImpl implements LocationRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 
@@ -56,7 +57,7 @@ class LocationRepositoryImpl implements LocationRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 
@@ -70,7 +71,7 @@ class LocationRepositoryImpl implements LocationRepository {
     } on DioException catch (e) {
       return Result.error(e.toAppFailure());
     } catch (_) {
-      return Result.error(AppFailure.unknown());
+      return const Result.error(AppFailure.unknown());
     }
   }
 }

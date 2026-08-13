@@ -16,7 +16,11 @@ class AppShellPage extends StatelessWidget {
     final color = AppColorScheme.of(context);
 
     return AutoTabsRouter(
-      routes: [CharactersRoute(), LocationsRoute(), EpisodesRoute()],
+      routes: [
+        const CharactersRoute(),
+        const LocationsRoute(),
+        const EpisodesRoute(),
+      ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
         bool isActive(int index) => index == tabsRouter.activeIndex;
@@ -29,8 +33,8 @@ class AppShellPage extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   blurRadius: 30,
-                  offset: Offset(0, -4),
-                  color: Color(0xFF000000).withAlpha(80),
+                  offset: const Offset(0, -4),
+                  color: const Color(0xFF000000).withAlpha(80),
                 ),
               ],
             ),
@@ -103,14 +107,14 @@ class _Tab extends StatelessWidget {
 
     return CupertinoButton(
       onPressed: isActive ? null : onPressed,
-      padding: EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10),
       child: Column(
         children: [
-          AppSvgPicture(
+          AppSvgPicture.asset(
             icon,
             color: isActive ? color.primary : color.textSecondary,
           ),
-          SizedBox(height: 3),
+          const SizedBox(height: 3),
           Text(
             title,
             style: AppTextStyles.s12w400(

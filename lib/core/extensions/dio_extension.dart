@@ -5,12 +5,12 @@ extension DioExceptionExtension on DioException {
   AppFailure toAppFailure() {
     final statusCode = response?.statusCode;
 
-    if (statusCode == 404) return AppFailure.notFound();
-    if (statusCode == 429) return AppFailure.requestLimit();
+    if (statusCode == 404) return const AppFailure.notFound();
+    if (statusCode == 429) return const AppFailure.requestLimit();
 
     return switch (type) {
-      DioExceptionType.connectionError => AppFailure.noConnection(),
-      _ => AppFailure.unknown(),
+      DioExceptionType.connectionError => const AppFailure.noConnection(),
+      _ => const AppFailure.unknown(),
     };
   }
 }
