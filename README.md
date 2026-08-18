@@ -49,4 +49,4 @@ UI дизайн взят из Figma Community:
 
 ## 📸 Preview
 
-![App Showcase](screenshots/app_showcase.png)
+![App Showcase](screenshots/app-showcase.png)
