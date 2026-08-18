@@ -49,13 +49,4 @@ UI дизайн взят из Figma Community:
 
 ## 📸 Preview
 
-<p align="center">
-  <img src="screenshots/character.png" width="24%">
-  <img src="screenshots/character-detail.png" width="24%">
-
-  <img src="screenshots/location.png" width="24%">
-  <img src="screenshots/location-detail.png" width="24%">
-  
-  <img src="screenshots/episode.png" width="24%">
-  <img src="screenshots/episode-detail.png" width="24%">
-</p>
+![App Showcase](screenshots/app_showcase.png)
